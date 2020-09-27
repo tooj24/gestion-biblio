@@ -1,0 +1,29 @@
+{% extends "biblio.html.twig" %}
+{% block body %}
+<div class="col-md-9">
+    <h1>Liste des étudiants</h1>
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Mention</th>
+            <th>Année d'étude</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for elem in eleves %}
+        <tr>
+            <td>{{ elem.nom }}</td>
+            <td>{{ elem.prenom }}</td>
+            <td>{{ elem.mention.nom }}</td>
+            <td>{{ elem.grade.nom }}</td>
+            <td><a href="{{ url( 'modifier', { id: elem.id, type: "eleve" } ) }}"><i class="fa fa-pencil"></i></td>
+            <td></a><a href="{{ url( 'supprimer', { id: elem.id, type: "eleve" } ) }}"><i style="color: red" class="fa fa-remove"></i></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>        
+    </table>
+    <a class="btn btn-success" href="{{ url( 'nouveau', { type: "eleve" } ) }}">Ajouter un nouvel éleve</a>
+</div>
+{% endblock %}

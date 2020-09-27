@@ -1,0 +1,7 @@
+<div class="col-md-3">
+    <ul class="nav nav-pills nav-stacked">
+        <li {% if type == 'eleve' %} class="active" {% endif %}><a class="btn btn-block btn-default" href="{{ url( 'liste', { type: "eleve" } ) }}">Eleves</a></li>
+        <li {% if type == 'livre' %} class="active" {% endif %}><a class="btn btn-block btn-default" href="{{ url( 'liste', { type: "livre" } ) }}">Livres</a></li>
+        <li {% if type == 'emprunt' %} class="active" {% endif %}><a class="btn btn-block btn-default" href="{{ url( 'liste', { type: "emprunt" } ) }}">Emprunts</a></li>
+    </ul>
+</div>

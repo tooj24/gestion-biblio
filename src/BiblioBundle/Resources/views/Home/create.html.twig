@@ -1,0 +1,19 @@
+{% extends "biblio.html.twig" %}
+{% block body %}
+<div class="col-md-9">
+    {{ form_start( form , { class: "form" } ) }}
+    {% for elem in form %}
+        {% set type = elem.vars.block_prefixes[1] %}
+        {% if type != 'hidden' %}
+            <div class="form-group">
+                {{ form_label( elem ) }}
+                {{ form_widget( elem ) }}
+                {% if type != 'submit' %}
+                    {{ form_errors( elem ) }}
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endfor %}
+    {{ form_end( form ) }}
+</div>  
+{% endblock %}

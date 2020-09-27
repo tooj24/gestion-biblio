@@ -1,0 +1,29 @@
+{% extends "biblio.html.twig" %}
+{% block body %}
+<div class="col-md-9">
+    <h1>Liste des emprunts</h1>
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date d'emprunt</th>
+            <th>Date du rendu</th>
+            <th>Livre</th>
+            <th>Eleve</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for elem in emprunts %}
+        <tr>
+            <td>{{ elem.dateEmprunt | date( 'd-m-Y' ) }}</td>
+            <td>{{ elem.dateRendu | date( 'd-m-Y' ) }}</td>
+            <td><a href="{{ url ( 'voir', { id: elem.livre.id, type: "livre" } ) }}">{{ elem.livre.id }}</a></td>
+            <td><a href="{{ url ( 'voir', { id: elem.eleve.id, type: "eleve" } ) }}">{{ elem.eleve.id }}</a></td>
+            <td><a href="{{ url( 'modifier', { id: elem.id, type: "eleve" } ) }}"><i class="fa fa-pencil"></i></td>
+            <td></a><a href="{{ url( 'supprimer', { id: elem.id, type: "emprunt" } ) }}"><i style="color: red" class="fa fa-remove"></i></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>        
+    </table>
+    <a class="btn btn-success" href="{{ url( 'nouveau', { type: "emprunt" } ) }}">Nouveau emprunt</a>
+</div>
+{% endblock %}
